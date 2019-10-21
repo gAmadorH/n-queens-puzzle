@@ -1,3 +1,5 @@
+from timer import timer
+
 class NQueensSolver:
   def __init__(self, N):
     self.N = N
@@ -6,6 +8,7 @@ class NQueensSolver:
     self.solution = []
     self.all_ones = (1 << self.N) - 1
 
+  @timer
   def run(self):
     self.solve(0, 0, 0, 0)
     return self.all_solutions
