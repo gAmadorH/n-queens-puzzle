@@ -11,6 +11,8 @@ class NQueensSolver:
   @timer
   def run(self):
     self.solve(0, 0, 0, 0)
+
+  def get_solutions(self):
     return self.all_solutions
 
   def solve(self, column, left_diagonal, right_diagonal, queens_placed):
@@ -31,3 +33,18 @@ class NQueensSolver:
         queens_placed + 1
       )
       self.solution.pop()
+  
+  @staticmethod
+  def print_board(solution):
+    size = len(solution) 
+    board = ''
+
+    for colum in range(size):
+      for row in range(size):
+        if solution[row] == colum:
+          board += 'Q '
+        else: 
+          board += '. '
+      board += '\n'
+
+    return board
