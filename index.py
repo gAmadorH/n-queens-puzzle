@@ -2,9 +2,8 @@ from sqlalchemy import create_engine, MetaData, Table, Column, Integer, ARRAY, s
 from sqlalchemy.sql import and_
 from NQueensSolver import NQueensSolver
 
-
 if __name__ == "__main__":
-  engine = create_engine("postgresql://nQueensPuzzle:nQueensPuzzle@localhost:5432/nQueensPuzzle",echo=True)
+  engine = create_engine("postgresql://nqueenspuzzledb:5432/nQueensPuzzle",echo=True)
   metadata = MetaData()
 
   Solutions = Table(
