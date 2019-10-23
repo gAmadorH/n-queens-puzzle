@@ -3,19 +3,19 @@ from sqlalchemy.sql import and_
 from NQueensSolver import NQueensSolver
 
 if __name__ == "__main__":
-  engine = create_engine("postgresql://nqueenspuzzledb:5432/nQueensPuzzle",echo=True)
+  engine = create_engine("postgresql://nQueensPuzzle:nQueensPuzzle@nqueenspuzzledb:5432/nQueensPuzzle",echo=False)
   metadata = MetaData()
 
   Solutions = Table(
     'solutions', metadata, 
-    Column('id', Integer, primary_key=True, autoincrement=True), 
+    Column('id', Integer, primary_key=True), 
     Column('n', Integer), 
     Column('board', ARRAY(Integer))
   )
 
   metadata.create_all(engine)
 
-  size = 8
+  size = 7
   solver = NQueensSolver(size)
   solver.run()
     

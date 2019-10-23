@@ -2,5 +2,15 @@ version: '3'
 services:
   nqueenspuzzle:
     build: .
+    depends_on:
+      -  nqueenspuzzledb
   nqueenspuzzledb:
     image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=nQueensPuzzle
+      - POSTGRES_PASSWORD=nQueensPuzzle
+      - POSTGRES_DB=nQueensPuzzle
+
