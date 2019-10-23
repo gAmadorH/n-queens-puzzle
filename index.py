@@ -4,19 +4,19 @@ from NQueensSolver import NQueensSolver
 
 
 if __name__ == "__main__":
-  engine = create_engine("postgresql://nQueensPuzzle:nQueensPuzzle@localhost:5432/nQueensPuzzle",echo = True)
+  engine = create_engine("postgresql://nQueensPuzzle:nQueensPuzzle@localhost:5432/nQueensPuzzle",echo=True)
   metadata = MetaData()
 
   Solutions = Table(
     'solutions', metadata, 
-    Column('id', Integer, primary_key = True), 
+    Column('id', Integer, primary_key=True, autoincrement=True), 
     Column('n', Integer), 
     Column('board', ARRAY(Integer))
   )
 
   metadata.create_all(engine)
 
-  size = 5
+  size = 8
   solver = NQueensSolver(size)
   solver.run()
     
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     selected_solutions = engine.execute(stmt).fetchone()
 
     if selected_solutions is None:
-      insert_solutions = Solutions.insert().values(n = size, board = solution)
+      insert_solutions = Solutions.insert().values(n=size, board=solution)
       engine.execute(insert_solutions)
 
   print(solver.num_solutions)
