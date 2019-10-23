@@ -1,0 +1,6 @@
+version: '3'
+services:
+  nqueenspuzzle:
+    build: .
+  nqueenspuzzledb:
+    image: postgres
