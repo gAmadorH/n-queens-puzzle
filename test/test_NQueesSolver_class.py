@@ -1,7 +1,7 @@
-from NQueensSolver import NQueensSolver
+from src.NQueensSolver import NQueensSolver
 import pytest
 
-def get_board_data_test():
+def get_nXn_board_data_test():
       return [
         (1, 1),
         (2, 0),
@@ -12,15 +12,15 @@ def get_board_data_test():
         (7, 40),
         (8, 92),
         (9, 352),
-        (10, 724),
-        (11, 2_680),
-        (12, 14_200),
-        (13, 73_712),
-        (14, 365_596),
-        (15, 2_279_184),
-        (16, 14_772_512),
-        (17, 95_815_104),
-        (18, 666_090_624),
+        # (10, 724),
+        # (11, 2_680),
+        # (12, 14_200),
+        # (13, 73_712),
+        # (14, 365_596),
+        # (15, 2_279_184),
+        # (16, 14_772_512),
+        # (17, 95_815_104),
+        # (18, 666_090_624),
         # (19, 4,968_057_848),
         # (20, 39_029_188_884),
         # (21, 314_666_222_712),
@@ -32,10 +32,9 @@ def get_board_data_test():
         # (27, 234_907_967_154_122_528),
       ]
 
-@pytest.mark.parametrize('n, expected', get_board_data_test())
-def test_8X8_board(n, expected):
-    size = n
-    solver = NQueensSolver(size)
+@pytest.mark.parametrize('n, num_solutions', get_nXn_board_data_test())
+def test_nXn_board(n, num_solutions):
+    solver = NQueensSolver(n)
     solver.run()
 
-    assert solver.num_solutions == expected
+    assert solver.num_solutions == num_solutions
