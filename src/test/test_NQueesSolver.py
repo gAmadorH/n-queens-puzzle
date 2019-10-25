@@ -1,8 +1,9 @@
-from src.NQueensSolver import NQueensSolver
+from ..NQueensSolver import NQueensSolver
 import pytest
 
 def get_nXn_board_data_test():
   return [
+    (0, 0),
     (1, 1),
     (2, 0),
     (3, 0),
