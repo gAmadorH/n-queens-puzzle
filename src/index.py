@@ -25,8 +25,6 @@ def resolve(size):
     if Solution.findOne(size, solution) is None:
       Solution.createOne(size, solution)
 
-  db_session.remove()
-
   print("Board size : {}".format(size))
   print("Number of solutions: {}".format(solver.get_num_solutions()))
   print("Resolution time (milliseconds): {}".format(duration_milliseconds))
@@ -34,7 +32,6 @@ def resolve(size):
   print("Resolution time (minutes): {}".format(duration_minutes))
 
 if __name__ == "__main__":
-  
   while True:
     questions = [
       inquirer.Text('size', message="Indicate the size of the chess board, only Enter key to exit")
@@ -46,14 +43,15 @@ if __name__ == "__main__":
     if len(size) <= 0:
       break
 
-    sizeInt = 0
+    size_int = 0
     try:
-        sizeInt = int(size)
+        size_int = int(size)
     except:
       print("inavalid value")
       continue
+      db_session.remove()
 
-    print(sizeInt)
-    # resolve(size)
+    resolve(size_int)
 
+  db_session.remove()
   print("Exit!!! bye bye!!!")
